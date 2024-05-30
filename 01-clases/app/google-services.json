@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "269597676904",
+    "project_id": "cdpp-2024a-sw-gr2",
+    "storage_bucket": "cdpp-2024a-sw-gr2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:269597676904:android:92ad50ee0e9884e25e72dd",
+        "android_client_info": {
+          "package_name": "com.example.a2024aswgr2cdpp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9n3s9YeUJJ2e3tGRwZ5-JHroylZepcbY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
