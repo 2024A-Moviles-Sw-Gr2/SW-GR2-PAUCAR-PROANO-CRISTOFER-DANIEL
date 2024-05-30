@@ -1,1 +1,2 @@
 1,1,Finanzas,15,12000.0,true
+2,2,Recursos Humanos,8,15000.0,true
