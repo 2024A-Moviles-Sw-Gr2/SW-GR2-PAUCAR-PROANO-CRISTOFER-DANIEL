@@ -3,4 +3,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="camera_button_background_color">#4995BE</color>
+    <color name="colorPrimary">#4995BE</color>
 </resources>

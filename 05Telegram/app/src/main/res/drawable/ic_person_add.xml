@@ -1,0 +1,14 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- Figura de la Persona -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M15,14c-2.21,0-4,1.79-4,4v1h8v-1C19,15.79,17.21,14,15,14zM15,12c1.66,0,3-1.34,3-3s-1.34-3-3-3-3,1.34-3,3S13.34,12,15,12z"/>
+    <!-- Símbolo de Más al Lado de la Persona -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M8,11H6v2H4v2h2v2h2v-2h2v-2H8V11z"/>
+</vector>
