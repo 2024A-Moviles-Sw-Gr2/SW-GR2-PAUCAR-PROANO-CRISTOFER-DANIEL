@@ -1,7 +1,6 @@
 package com.example.a04_kotlinapp
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ContextMenu
 import android.view.MenuItem
@@ -11,6 +10,7 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -36,6 +36,11 @@ class MainActivity : AppCompatActivity() {
         val btnRedirectCreateCompany = findViewById<Button>(R.id.btn_redirect_create_company)
         btnRedirectCreateCompany.setOnClickListener {
             goToActivity(CreateUpdateCompany::class.java)
+        }
+
+        val btnViewMap = findViewById<Button>(R.id.btn_view_map)
+        btnViewMap.setOnClickListener {
+            goToActivity(MapsActivity::class.java)
         }
 
         registerForContextMenu(companiesList)

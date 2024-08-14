@@ -7,14 +7,18 @@ class CompanyEntity(
     var id: Int,
     var name: String,
     var industry: String,
-    var foundedYear: Int
+    var foundedYear: Int,
+    var latitude: Double,
+    var longitude: Double
 ): Parcelable {
 
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
         parcel.readString()!!,
         parcel.readString()!!,
-        parcel.readInt()
+        parcel.readInt(),
+        parcel.readDouble(),
+        parcel.readDouble()
     ) {
     }
 
@@ -23,6 +27,8 @@ class CompanyEntity(
         parcel.writeString(name)
         parcel.writeString(industry)
         parcel.writeInt(foundedYear)
+        parcel.writeDouble(latitude)
+        parcel.writeDouble(longitude)
     }
 
     override fun describeContents(): Int {
@@ -42,5 +48,4 @@ class CompanyEntity(
     override fun toString():String {
         return "$id - $name"
     }
-
 }

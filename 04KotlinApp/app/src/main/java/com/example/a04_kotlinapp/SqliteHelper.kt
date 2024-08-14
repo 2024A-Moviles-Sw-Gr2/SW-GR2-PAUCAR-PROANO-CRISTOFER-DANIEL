@@ -5,9 +5,7 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
-class SqliteHelper(
-    context: Context?
-) : SQLiteOpenHelper(context, "AndroidApp", null, 1) {
+class SqliteHelper(context: Context?) : SQLiteOpenHelper(context, "AndroidApp", null, 1) {
 
     override fun onCreate(db: SQLiteDatabase?) {
         val createCompanyTable = """
@@ -15,7 +13,9 @@ class SqliteHelper(
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 name VARCHAR(100),
                 industry VARCHAR(50),
-                foundedYear INTEGER
+                foundedYear INTEGER,
+                latitude REAL,
+                longitude REAL
             );
         """.trimIndent()
 
@@ -35,15 +35,12 @@ class SqliteHelper(
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {}
 
-    fun getAllCompanies():ArrayList<CompanyEntity> {
+    fun getAllCompanies(): ArrayList<CompanyEntity> {
         val lectureDB = readableDatabase
         val queryScript ="""
             SELECT * FROM COMPANY
         """.trimIndent()
-        val queryResult = lectureDB.rawQuery(
-            queryScript,
-            emptyArray()
-        )
+        val queryResult = lectureDB.rawQuery(queryScript, emptyArray())
         val response = arrayListOf<CompanyEntity>()
 
         if(queryResult.moveToFirst()) {
@@ -53,7 +50,9 @@ class SqliteHelper(
                         queryResult.getInt(0),
                         queryResult.getString(1),
                         queryResult.getString(2),
-                        queryResult.getInt(3)
+                        queryResult.getInt(3),
+                        queryResult.getDouble(4),
+                        queryResult.getDouble(5)
                     )
                 )
             } while(queryResult.moveToNext())
@@ -93,22 +92,16 @@ class SqliteHelper(
         return response
     }
 
-    fun createCompany(
-        name: String,
-        industry: String,
-        foundedYear: Int
-    ): Boolean {
+    fun createCompany(name: String, industry: String, foundedYear: Int, latitude: Double, longitude: Double): Boolean {
         val writeDB = writableDatabase
         val valuesToStore = ContentValues()
         valuesToStore.put("name", name)
         valuesToStore.put("industry", industry)
         valuesToStore.put("foundedYear", foundedYear)
+        valuesToStore.put("latitude", latitude)
+        valuesToStore.put("longitude", longitude)
 
-        val storeResult = writeDB.insert(
-            "COMPANY",
-            null,
-            valuesToStore
-        )
+        val storeResult = writeDB.insert("COMPANY", null, valuesToStore)
         writeDB.close()
 
         return storeResult.toInt() != -1
@@ -135,25 +128,17 @@ class SqliteHelper(
         return storeResult.toInt() != -1
     }
 
-    fun updateCompany(
-        id: Int,
-        name: String,
-        industry: String,
-        foundedYear: Int
-    ): Boolean {
+    fun updateCompany(id: Int, name: String, industry: String, foundedYear: Int, latitude: Double, longitude: Double): Boolean {
         val writeDB = writableDatabase
         val valuesToUpdate = ContentValues()
         valuesToUpdate.put("name", name)
         valuesToUpdate.put("industry", industry)
         valuesToUpdate.put("foundedYear", foundedYear)
+        valuesToUpdate.put("latitude", latitude)
+        valuesToUpdate.put("longitude", longitude)
 
         val parametersUpdateQuery = arrayOf(id.toString())
-        val updateResult = writeDB.update(
-            "COMPANY",
-            valuesToUpdate,
-            "id=?",
-            parametersUpdateQuery
-        )
+        val updateResult = writeDB.update("COMPANY", valuesToUpdate, "id=?", parametersUpdateQuery)
         writeDB.close()
 
         return updateResult != -1

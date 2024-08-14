@@ -58,6 +58,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/input_company_industry" />
 
+    <EditText
+        android:id="@+id/input_company_latitude"
+        android:layout_width="230dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="Ingrese la latitud"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/input_company_founded_year" />
+
+    <EditText
+        android:id="@+id/input_company_longitude"
+        android:layout_width="230dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="Ingrese la longitud"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/input_company_latitude" />
+
     <Button
         android:id="@+id/btn_create_update_company"
         android:layout_width="wrap_content"
@@ -66,5 +92,5 @@
         android:text="Guardar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_company_founded_year" />
+        app:layout_constraintTop_toBottomOf="@+id/input_company_longitude" />
 </androidx.constraintlayout.widget.ConstraintLayout>
