@@ -6,5 +6,7 @@
         <item>Martes</item>
         <item>Miercoles</item>
     </string-array>
+    <string name="title_activity_google_maps">GoogleMapsActivity</string>
+    <string name="title_activity_google_maps_inicio">GoogleMapsInicioActivity</string>
 
 </resources>

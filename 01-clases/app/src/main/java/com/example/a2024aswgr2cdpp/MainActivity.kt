@@ -2,6 +2,7 @@ package com.example.a2024aswgr2cdpp
 
 import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.ContactsContract
@@ -20,31 +21,41 @@ class MainActivity : AppCompatActivity() {
         snack.show()
     }
 
-    val callbackContenidoIntentExplicito=
+    val callbackContenidoIntentExplicito =
         registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()
         ){
                 result ->
-            if(result.resultCode== Activity.RESULT_OK){
+            if(result.resultCode == Activity.RESULT_OK){
                 if(result.data != null){
-                    //Logical negocio
+                    // logica negocio
                     val data = result.data;
                     mostrarSnackBar(
-                        "${data?.getStringExtra("nombreModificado")}"
+                        "${data?.getStringExtra("nombreMofificado")}"
                     )
                 }
             }
         }
-    val callbackContenidoIntentImplicito=
+    val callbackContenidoIntentImplicito =
         registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()
-        ){
-                result ->
-            if(result.resultCode==Activity.RESULT_OK){
-                if(result.data != null){
-                    //Logical negocio
-                    if (result.data!!.data!=null){
+        ) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                if (result.data != null) {
+                    // logica negocio
+                    if (result.data!!.data != null) {
 
+                        val uri: Uri = result.data!!.data!!
+                        val cursor = contentResolver.query(
+                            uri, null, null, null, null, null
+                        )
+                        cursor?.moveToFirst()
+                        val indiceTelefono = cursor?.getColumnIndex(
+                            ContactsContract.CommonDataKinds.Phone.NUMBER
+                        )
+                        val telefono = cursor?.getString(indiceTelefono!!)
+                        cursor?.close()
+                        mostrarSnackBar("Telefono $telefono")
                     }
                 }
             }
@@ -89,6 +100,31 @@ class MainActivity : AppCompatActivity() {
             intentExplicito.putExtra("entrenador", BEntrenador(10, "Adrian", "Eguez"))
             callbackContenidoIntentExplicito.launch(intentExplicito)
         }
+
+        // Inicializar Base de Datos
+        EBaseDeDatos.tablaEntrenador = ESqliteHelperEntrenador (
+            this
+        )
+        val botonSqlite = findViewById<Button>(R.id.btn_sqlite)
+        botonSqlite.setOnClickListener {
+            irActividad (ECrudEntrenador::class.java)
+        }
+        val botonGMaps = findViewById<Button>(
+            R.id.btn_google_maps)
+        botonGMaps.setOnClickListener {
+            irActividad(GGoogleMapsActivity::class.java)
+        }
+        val botonRView = findViewById<Button>(
+            R.id.btn_recycler_view)
+        botonRView.setOnClickListener {
+            irActividad(FRecyclerView::class.java)
+        }
+        val BotonFirebaseUI = findViewById<Button>(R.id.btn_intent_firebase_ui)
+        BotonFirebaseUI.setOnClickListener {
+            irActividad(HFirebaseUIAuth::class.java)
+        }
+
+
 
     }
 

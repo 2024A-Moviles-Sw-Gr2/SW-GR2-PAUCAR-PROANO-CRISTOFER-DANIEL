@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/mi_edit_department"
+        android:title="Editar departamento" />
+    <item
+        android:id="@+id/mi_delete_department"
+        android:title="Eliminar departamento" />
+</menu>
+

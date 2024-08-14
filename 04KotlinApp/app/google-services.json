@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "965027369087",
+    "project_id": "deber-8b495",
+    "storage_bucket": "deber-8b495.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:965027369087:android:534716d73b3d20881aef4a",
+        "android_client_info": {
+          "package_name": "com.example.a04_kotlinapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDef98itxN1Ypt9-BxQTRIzvouJtgx7oxo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
